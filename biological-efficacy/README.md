@@ -5,7 +5,6 @@ Install Docker from https://docs.docker.com/get-docker/
 Execute the following steps to run the dashboard.
 
 ```bash
-git clone https://github.com/AugmentHCI/biological-efficacy.git
 cd biological-efficacy
 docker build -t biological-efficacy .
 docker run -d --name biological-efficacy -p 8000:80 biological-efficacy

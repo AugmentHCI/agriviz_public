@@ -5,7 +5,6 @@ Install Docker from https://docs.docker.com/get-docker/
 Execute the following steps to run the dashboard.
 
 ```bash
-git clone https://github.com/AugmentHCI/product-prices.git
 cd product-prices
 docker-compose up -d --build
 ```

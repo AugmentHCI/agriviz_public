@@ -5,7 +5,6 @@ Install Docker from https://docs.docker.com/get-docker/
 Execute the following steps to run the dashboard.
 
 ```bash
-git clone https://github.com/AugmentHCI/VinetoWine.git
 cd VinetoWine
 docker build -t vinetowine .
 docker run -d --name vinetowine -p 8000:80 vinetowine
