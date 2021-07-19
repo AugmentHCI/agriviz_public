@@ -1,0 +1,160 @@
+body {
+    background: #f5f5f5;
+}
+
+h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: #EF7D00;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: #EF7D00;
+}
+
+.filter {
+    display: inline-block;
+    margin-left: 10px;
+    min-width: 280px;
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #EF7D00;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#content {
+    opacity: 0.5;
+}
+
+.axisGray line {
+    stroke: gray;
+}
+
+.axisGray path {
+    stroke: gray;
+}
+
+.axisGray text {
+    fill: gray;
+}
+
+.axis_label {
+    font-size: small;
+    fill: gray;
+}
+
+.d3-tip {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+    z-index: 3;
+    pointer-events: none !important;
+}
+
+[class^="area"] {
+    opacity: 0.1;
+}
+
+[class^="bar"] {
+    opacity: 0.9;
+}
+
+[class^="label-"] {
+    font-weight: bold;
+    text-anchor: start;
+    font-size: x-small;
+}
+
+[class^="barlabel-"] {
+    fill: white;
+    text-anchor: middle;
+    font-size: x-small;
+}
+
+.filters {
+    width: 800px;
+    float: left;
+}
+
+.right-complete {
+    width: 100%;
+}
+
+.row .col {
+    margin: 0px !important;
+}
+
+#donut_text {
+    font-size: 1rem;
+}
+
+#donut {
+    min-height: 522px;
+}
+
+#geocledian {
+    min-height: 522px;
+}
+
+#lot-header {
+    min-height: 212px;
+}
+
+#parameter-header {
+    min-height: 212px;
+}
+
+#expert-header {
+    min-height: 212px;
+}
+
+@media all and (max-width: 1320px) and (min-width: 0px) {
+    #lot-header {
+        min-height: 312px;
+    }
+    #parameter-header {
+        min-height: 312px;
+    }
+    #expert-header {
+        min-height: 312px;
+    }
+    #my_dataviz {
+        height: 250;
+    }
+}

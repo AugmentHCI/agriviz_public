@@ -1,0 +1,2 @@
+docker build --pull --rm -f Dockerfile -t vinetowine:latest .
+docker run --publish 8099:80 vinetowine

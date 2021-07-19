@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<title>Bigdatagrapes Leaf Counting demo</title>
+<meta charset="utf-8">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+
+<!-- Load d3.js -->
+<script src="js/d3.v5.js"></script>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+
+<script src="js/underscore-min.js"></script>
+<script src="js/d3-tip.js"></script>
+
+<script src="js/micromodal.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+
+<div id="loader"></div>
+
+<div id="content">
+
+    <div class="row">
+
+        <div class="col s3" id="parameter-header">
+            <div class="card-content">
+                <h4>Genotypes</h4>
+                <!-- <form action="#" id="filters"></form> -->
+                <div class="input-field" id="genotypes-wrapper">
+                    <select class="genotypes" multiple>
+              <option id="genotype-selectall" value="selectall" selected disabled>Genotypes</span>
+              </option>
+            </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s5" id="parameter-header">
+            <div class="card-content">
+                <h4>Scenarios</h4>
+                <form action="#" id="filters2"></form>
+            </div>
+        </div>
+
+        <div class="col s2" id="expert-header">
+            <div class="card-content">
+                <div class="switch">
+                    <h4>SHOW PREDICTED DATA</h4>
+                    <label>Real<input id="expert-mode" type="checkbox"><span class="lever"></span>Predicted</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="col s2" id="expert-header">
+        <div class="card-content">
+            <div class="switch">
+                <h4>CUMMULATIVE</h4>
+                <label>Actual<input id="cummulative-mode" type="checkbox"><span class="lever"></span>Cumulative</label>
+            </div>
+        </div>
+    </div> -->
+
+        <div class="col s2" id="expert-header">
+            <div class="card-content">
+                <a class="waves-effect orange default btn" onClick="exportData()"><i class="material-icons left">save</i>Export</a>
+            </div>
+        </div>
+
+        <div class="col s12">
+
+
+            <div class="grid-container">
+                <!-- <div class="card-content"> -->
+
+                <div id="my_dataviz"></div>
+                <!-- <select multiple="multiple" id="my-select" name="my-select[]">
+    <select multiple="multiple" id="my-select" name="my-select[]"> -->
+                </select>
+                <!-- </div> -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                <header class="modal__header">
+                    <h2 class="modal__title" id="modal-1-title">
+                    </h2>
+                    <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                </header>
+                <main class="modal__content" id="modal-1-content">
+                    <image id="modal_image" class="center" />
+                    <br>
+                    <span class="modal_date_span">Date: </span>
+                    <input class="modal_data_input" id="modal_date" type="datetime-local">
+                    <span class="modal_date_span">Comment: </span>
+                    <input class="modal_data_input" id="modal_comment">
+                    <br>
+                    <span class="modal_date_span">Real label: </span>
+                    <input class="modal_data_input" id="modal_count">
+                    <span class="modal_date_span">Predicted label: </span>
+                    <input class="modal_data_input" id="modal_predicted_count">
+                    <span id="event_model_label"></span>
+                </main>
+                <footer class="modal__footer">
+                    <!-- <button class="modal__btn modal__btn-secondary" onclick="removeEvent()">Remove</button> -->
+                    <button class="modal__btn modal__btn-primary" onclick="saveEvent()">Save</button>
+                    <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    if (window.navigator.userAgent.match(/(MSIE|Trident)/)) {
+        alert("Unfortunately, Internet Explorer is not supported for this demo. Please use another browser to test this demo.")
+        window.location.href = "https://www.accumulate.be/";
+    }
+    if (window.navigator.userAgent.match(/(MSIE|Trident)/)) {
+        alert("Unfortunately, Internet Explorer is not supported for this demo. Please use another browser to test this demo.")
+        window.location.href = "https://www.accumulate.be/";
+    }
+</script>
+
+<!-- Load Materialize CSS -->
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+<script src="leaf2.js"></script>

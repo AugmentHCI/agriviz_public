@@ -1,0 +1,172 @@
+body,
+html {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-size: 12px;
+    background: #f5f5f5;
+}
+
+h4 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    margin-top: 12px;
+    color: #EF7D00;
+    min-width: 90px;
+}
+
+.title-container {
+    overflow: auto;
+}
+
+
+/* hide horizontal scrollbar due to hack (white space) */
+
+.multiple-select-dropdown {
+    overflow-x: hidden;
+}
+
+.h4-span {
+    font-size: xx-small;
+    text-decoration: underline;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.left-float {
+    float: left;
+}
+
+.select-dropdown {
+    color: #EF7D00;
+}
+
+.title {
+    margin: 0;
+    position: absolute;
+    top: 10px;
+}
+
+#normal {
+    color: #9e9e9e;
+}
+
+.filter {
+    display: inline-block;
+    margin-left: 5px;
+    min-width: 135px;
+}
+
+.filters-area {
+    height: 52vh;
+}
+
+#parcoords-widget {
+    height: 32vh;
+}
+
+#grid,
+#pager {
+    position: fixed;
+    width: 100%;
+}
+
+#grid {
+    bottom: 0;
+    height: 15vh;
+}
+
+.export {
+    margin-top: 12px;
+}
+
+@media only screen and (max-height: 880px) {
+    #grid {
+        display: none;
+    }
+    .filters-area {
+        height: 70vh;
+    }
+    #parcoords-widget {
+        height: 25vh;
+    }
+}
+
+#pager {
+    bottom: 16vh;
+    height: 20px;
+}
+
+.word {
+    cursor: pointer;
+}
+
+.slick-row:hover {
+    font-weight: bold;
+    color: #069;
+}
+
+#viticulture {
+    color: #6aa84f;
+}
+
+#winemaking {
+    color: #a64d79;
+}
+
+[class^="slickgrid_"],
+[class^="slickgrid_"] div {
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+
+.slick-header-column.ui-state-default {
+    background: none;
+    background-color: #f5f5f5;
+    color: #EF7D00;
+    border: none;
+    padding: 0;
+    text-shadow: none;
+    font-family: sans-serif;
+    font-size: 1rem;
+    height: 40px;
+    line-height: 40px;
+}
+
+.slick-row.ui-widget-content,
+.slick-cell {
+    background: none;
+    background-color: #ffffff;
+    color: #9e9e9e;
+    border: none;
+    border-bottom: solid 1px #ffffff;
+    font-size: 1rem;
+    height: 60px;
+    /* line-height: 60px; */
+    padding: 0 5px;
+}
+
+.tooltip {
+    background-color: #f5f5f5;
+    opacity: 0.8;
+    border: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 5px;
+    border-color: #EF7D00;
+    max-width: 205px;
+}
+
+#other-aroma-groups-wrapper {
+    padding : 0 10rem 0 10rem;
+}
+
+
+#aroma-union-inter {
+    /*padding : 0 2rem 0 0;
+    display : block; */
+    position: absolute;
+    padding-left: 4rem;
+}

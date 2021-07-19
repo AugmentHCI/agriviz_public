@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<title>Bigdatagrapes Irrigation demo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+<script src="js/raphael-2.1.4.min.js"></script>
+<script src="js/justgage.js"></script>
+
+<!-- Load d3.js -->
+<script src="js/d3.v5.js"></script>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+
+<script src="js/underscore-min.js"></script>
+<script src="js/d3-tip.js"></script>
+<script src="js/jquery.multi-select.js"></script>
+
+
+<!--GC map component begin -->
+
+<!-- loads also dependent css files via @import -->
+<link href="css/gc-map.css" rel="stylesheet">
+<!-- init script for components -->
+<script type="text/javascript" src="js/gc-map-init.js"></script>
+
+<!--GC map component end -->
+
+<link rel="stylesheet" href="css/style.css">
+
+
+<div id="loader"></div>
+
+<div id="content">
+
+    <div class="row">
+        <div class="col s3 card" id="lot-header">
+            <div class="card-content">
+                <h4>INSPECTING LOT</h4>
+
+                <div class="input-field ">
+                    <select id="lots-select">
+
+        </select>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col s6 card" id="parameter-header">
+            <div class="card-content">
+                <h4>PARAMETERS</h4>
+                <form action="#" id="filters"></form>
+                <h4>SATELLITE VEGETATION INDEXES</h4>
+                <form action="#" id="sat-filters"></form>
+            </div>
+        </div>
+
+        <div class="col s3 card" id="expert-header">
+            <div class="card-content">
+                <div class="switch">
+                    <h4>EXPERT MODE</h4>
+                    <label>
+                  Off
+                  <input id="expert-mode" type="checkbox">
+                  <span class="lever"></span>
+                  On
+                </label>
+                    <div class="input-field hide" id="other-parameters-wrapper">
+                        <select id="other-parameters" multiple>
+                      <option value="" disabled>More parameters</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col s12 card">
+            <!-- <div class="card-content"> -->
+            <div id="my_dataviz"></div>
+            <!-- </div> -->
+        </div>
+        <!-- </div>
+
+<div class="row"> -->
+        <div class="col s9 card" id="geocledian">
+            <div class="card-content">
+                <div id="gc-app">
+                    <div id="map-hack">
+                        <!-- <gc-map mapid="map1" gc-apikey="454cd545-217c-45aa-b32a-20b49096729b" gc-host="geocledian.com" basemap="osm" parcel-id="142421"></gc-map> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s3 card" id="donut">
+            <div class="card-content">
+                <h4>WATER BALANCE LEVEL</h4>
+                <span id="donut_date"></span>
+                <!-- <div id="my_donut"></div> -->
+                <div id="gauge" class="200x160px"></div>
+
+                <div id="donut_text" class="card-content"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    if (window.navigator.userAgent.match(/(MSIE|Trident)/)) {
+        alert("Unfortunately, Internet Explorer is not supported for this demo. Please use another browser to test this demo.")
+        window.location.href = "http://www.bigdatagrapes.eu/";
+    }
+</script>
+
+<!-- Load Materialize CSS -->
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+<!-- Load d3.js -->
+<script src="main.js"></script>

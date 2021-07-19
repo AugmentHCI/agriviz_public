@@ -1,0 +1,142 @@
+<!doctype html>
+<meta charset="UTF-8">
+<head>
+    <title>BDG - Wine making linked data</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+    <script src="js/underscore-min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/parcoords.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- SlickGrid -->
+    <link rel="stylesheet" href="js/slickgrid24/slick.grid.css" type="text/css" />
+    <link rel="stylesheet" href="js/slickgrid24//css/smoothness/jquery-ui.css" type="text/css" />
+
+    <script src="js/slickgrid24/lib/jquery-1.12.4.min.js"></script>
+    <script src="js/slickgrid24/lib/jquery.event.drag-2.3.0.js"></script>
+
+    <script src="js/slickgrid24/slick.core.js"></script>
+    <script src="js/slickgrid24/slick.grid.js"></script>
+    <script src="js/slickgrid24/slick.dataview.js"></script>
+    <!-- End SlickGrid -->
+
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/d3.v5.js"></script>
+
+    <!-- <script src="js/divgrid.js"></script> -->
+
+
+    <!-- Load d3-cloud -->
+    <script src="js/d3.layout.cloud.js"></script>
+
+    <script src="js/crossfilter.js"></script>
+    <script src="js/parcoords-filter.js"></script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col s4 title">
+            <h4><span id="viticulture">De la Viticulture</span><span id="normal"> &#xE0; </span><span id="winemaking">la Vinification</span><a id="reset" class="h4-span">R&#xE9;initialiser tout</a></h4>
+        </div>
+        <div class="col s2 right export">
+            <a class="waves-effect orange default btn" onClick="exportData()"><i class="material-icons left">save</i>Exporter</a>
+        </div>
+        <div class="col s4 right">
+            <div class="input-field" id="other-parameters-wrapper">
+                <select id="other-parameters" multiple>
+                    <option for="hello" value="0" disabled selected class="removeSelected">Variables
+                    <!-- dirty hack for https://github.com/Dogfalo/materialize/issues/6206 -->
+                        <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col s2 right" id="tooltip-switch">
+            <h4>D&#xE9;tails donn&#xE9;es</h4>
+            <div class="switch">
+                <label>
+                    Non
+                    <input id="show-tooltip" type="checkbox" checked>
+                    <span class="lever"></span>
+                    Oui
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <div id="parcoords-widget" class="parcoords"></div>
+        </div>
+    </div>
+
+    <div class="row filters-area">
+        <div class="col s12 l4" id="parameter-header">
+            <div class="title-container">
+                <h4 class="left-float">C&#xE9;page<a id="grapeVariety-all" class="h4-span">S&#xE9;lectionner tout</a><a id="grapeVariety-none" class="h4-span">D&#xE9;sel&#xE9;ctionner tout</a></h4>
+                <div class="right">
+
+                </div>
+            </div>
+            <form action="#" id="filters0"></form>
+        </div>
+
+        <div class="col s12 l2">
+            <div id="parameter-header">
+                <h4>Ann&#xE9;e<a id="year-all" class="h4-span">S&#xE9;lectionner tout</a><a id="year-none" class="h4-span">D&#xE9;sel&#xE9;ctionner tout</a></h4>
+                <form action="#" id="filters1"></form>
+            </div>
+
+            <div id="parameter-header">
+                <h4>Couleur du vin<a id="wine_color-all" class="h4-span">S&#xE9;lectionner tout</a><a id="wine_color-none" class="h4-span">D&#xE9;sel&#xE9;ctionner tout</a></h4>
+                <form action="#" id="filters2"></form>
+            </div>
+        </div>
+
+        <div class="col s12 l6" id="parameter-header">
+            <h4 class="center">Ar&#xF4;me
+                <a id="aromas-reset" class="h4-span">r&#xE9;initialiser</a>
+                <a id="aroma-union-inter" class="switch">
+                    <label>
+                        <span title= "Vins qui comportent : 'arome 1' OU 'arome 2' OU .."> Union </span>
+                        <input id="union-inter" type="checkbox" checked = "true">
+                        <span class="lever"></span>
+                        <span title= "Vins qui comportent : 'arome 1' ET 'arome 2' ET .."> Intersection</span>
+                    </label>
+                </a>
+            </h4>
+
+            <div class="input-field" id="other-aroma-groups-wrapper">
+                <select id="other-aroma-groups" multiple>
+                    <option for="hello" value="0" disabled selected class="removeSelected"> Groupes d'Arôme
+                       <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                       
+                    </option>
+                </select>
+            </div>
+            <div id="my_dataviz"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12" id="parcoords-grid">
+            <div id="grid"></div>
+            <!-- <div id="pager"></div> -->
+        </div>
+    </div>
+
+
+    </div>
+
+    <!-- Load Materialize CSS -->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>const LANGUAGE ="fr" </script>
+    <script src="main.js"></script>
+
+</body>

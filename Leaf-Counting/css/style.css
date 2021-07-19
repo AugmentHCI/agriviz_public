@@ -1,0 +1,407 @@
+/* body {
+    background: #f5f5f5;
+} */
+
+h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: #ff9800;
+}
+
+.card-title {
+    font-size: 1rem;
+    color: #ff9800;
+}
+
+.filter {
+    display: inline-block;
+    margin-left: 10px;
+    min-width: 180px;
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #ff9800;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#content {
+    opacity: 0.5;
+}
+
+
+/* #myDiv {
+    display: none;
+    text-align: center; */
+
+
+/* 
+.gauge {
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+} */
+
+
+/* .card {
+    margin: 100px;
+} */
+
+
+/* *************************\
+  Axis
+\**************************/
+
+.axisGray line {
+    stroke: gray;
+}
+
+.axisGray path {
+    stroke: gray;
+}
+
+.axisGray text {
+    fill: gray;
+}
+
+.axis_label {
+    font-weight: bold;
+    font-size: smaller;
+    fill: gray;
+}
+
+.axisMM line {
+    stroke: steelblue;
+}
+
+.axisMM path {
+    stroke-width: 2px;
+    stroke: steelblue;
+}
+
+.axisMM text {
+    font-weight: bold;
+    fill: steelblue;
+}
+
+.axis_label_MM {
+    font-weight: bold;
+    font-size: small;
+    fill: steelblue;
+}
+
+.axisMM_highlighted line {
+    stroke: steelblue;
+}
+
+.axisMM_highlighted path {
+    stroke-width: 3px;
+    stroke: steelblue;
+}
+
+.axisMM_highlighted text {
+    font-weight: bold;
+    fill: steelblue;
+}
+
+.axisSAT line {
+    stroke: #b47846;
+}
+
+.axisSAT path {
+    stroke-width: 2px;
+    stroke: #b47846;
+}
+
+.axisSAT text {
+    font-weight: bold;
+    fill: #b47846;
+}
+
+.axis_label_SAT {
+    font-weight: bold;
+    font-size: small;
+    fill: #b47846;
+}
+
+.axisSAT_highlighted line {
+    stroke: #b47846;
+}
+
+.axisSAT_highlighted path {
+    stroke-width: 3px;
+    stroke: #b47846;
+}
+
+.axisSAT_highlighted text {
+    font-weight: bold;
+    fill: #b47846;
+}
+
+.axisTEMP line {
+    stroke: #b44682;
+}
+
+.axisTEMP path {
+    stroke-width: 2px;
+    stroke: #b44682;
+}
+
+.axisTEMP text {
+    font-weight: bold;
+    fill: #b44682;
+}
+
+.axis_label_TEMP {
+    font-weight: bold;
+    font-size: small;
+    fill: #b44682;
+}
+
+.axisTEMP_highlighted line {
+    stroke: #b44682;
+}
+
+.axisTEMP_highlighted path {
+    stroke-width: 3px;
+    stroke: #b44682;
+}
+
+.axisTEMP_highlighted text {
+    font-weight: bold;
+    fill: #b44682;
+}
+
+.d3-tip {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+    z-index: 3;
+    pointer-events: none !important;
+}
+
+.area-awc {
+    fill: #cce5df;
+    /* stroke: #69b3a2; */
+    stroke-width: 1.5;
+}
+
+.filters {
+    width: 800px;
+    float: left;
+}
+
+.right-complete {
+    width: 100%;
+}
+
+[class^="label-"] {
+    font-size: xx-small;
+}
+
+
+/* *************************\
+  Basic Modal Styles
+\**************************/
+
+.modal_date_span {
+    display: inline-block;
+    width: 160px;
+}
+
+.modal_data_input {
+    width: 200px;
+    height: 30px;
+}
+
+#modal_type_span {
+    display: none;
+}
+
+#modal_type {
+    display: none;
+    width: 205px;
+}
+
+.modal {
+    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+}
+
+.modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__container {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 500px;
+    max-height: 100vh;
+    border-radius: 4px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    color: #00449e;
+    box-sizing: border-box;
+}
+
+.modal__close {
+    background: transparent;
+    border: 0;
+}
+
+.modal__header .modal__close:before {
+    content: "\2715";
+}
+
+.modal__content {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, .8);
+}
+
+.modal__btn {
+    font-size: .875rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    background-color: #e6e6e6;
+    color: rgba(0, 0, 0, .8);
+    border-radius: .25rem;
+    border-style: none;
+    border-width: 0;
+    cursor: pointer;
+    -webkit-appearance: button;
+    text-transform: none;
+    overflow: visible;
+    line-height: 1.15;
+    margin: 0;
+    will-change: transform;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    transition: -webkit-transform .25s ease-out;
+    transition: transform .25s ease-out;
+    transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+}
+
+.modal__btn:focus,
+.modal__btn:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.modal__btn-primary {
+    background-color: #00449e;
+    color: #fff;
+}
+
+.modal__btn-secondary {
+    background-color: #DC143C;
+    color: #fff;
+}
+
+.micromodal-slide {
+    display: none;
+}
+
+.micromodal-slide.is-open {
+    display: block;
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+    animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+    animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+    animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+    animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+    will-change: transform;
+}
+
+.row .col {
+    margin: 0px !important;
+    /* padding: 0px !important; */
+}
+
+#donut_text {
+    font-size: 1rem;
+}
+
+.timepicker-modal {
+    width: 100%;
+    /* transform: scale(0.7) !important; */
+}
+
+.card-content {
+    margin: 20px;
+    min-height: 100px;
+}
