@@ -10,5 +10,3 @@ docker build -t biological-efficacy .
 docker run -d --name biological-efficacy -p 8000:80 biological-efficacy
 ```
 Open your web browser and go to http://localhost:8000 to see the app running.
-
-Note: datasets have been removed for security reasons. The datasets should normally be placed under the '/public/data/' folder.
